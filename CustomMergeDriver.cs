@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 
 class CustomMergeDriver
 {
@@ -17,11 +18,9 @@ class CustomMergeDriver
         string otherFile = args[2];
         string markerSize = args[3];
 		
-		string toFile = "C:\\Users\\doran\\source\\repos\\GitMergeDriverExperiment\\mergeError.txt";
-         Console.WriteLine("Base file: " + baseFile);
-         Console.WriteLine("Current file: " + currentFile);
-         Console.WriteLine("Other file: " + otherFile);
-         Console.WriteLine("Marker size: " + markerSize);
+		string toFile = "C:\\Users\\doran\\source\\repos\\GitMergeDriverExperiment\\mergeError.txt";         
+        Console.WriteLine("Current file: " + currentFile);
+        Console.WriteLine("Other file: " + otherFile);        
 
         try
         {
@@ -29,8 +28,16 @@ class CustomMergeDriver
             string currentContent = File.ReadAllText(currentFile);
             string otherContent = File.ReadAllText(otherFile);
 
-            string result = "Base:\n" + baseContent + "\n\nCurrent:\n" + currentContent + "\n\nOther:\n" + otherContent;
-            Console.WriteLine(result);
+            string result = "Current:\n" + currentContent + "\n\nOther:\n" + otherContent;
+
+            string[] currentContentWords = currentContent.Split('\n');
+            string[] otherContentWords = otherContent.Split('\n');
+            var uniqueWords = otherContentWords.Except(currentContentWords).Concat(currentContentWords.Except(otherContentWords)).ToList();
+
+            // Do whatever you want with uniqueWords instead
+            Console.WriteLine("Differences MOO:  " + String.Join(" ", uniqueWords));
+            
+            //Console.WriteLine(result);
 			
             // Write the result to the current file
             File.WriteAllText(toFile, result);
