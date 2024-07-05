@@ -32,10 +32,12 @@ class CustomMergeDriver
 
             string[] currentContentWords = currentContent.Split('\n');
             string[] otherContentWords = otherContent.Split('\n');
-            var uniqueWords = otherContentWords.Except(currentContentWords).Concat(currentContentWords.Except(otherContentWords)).ToList();
+            var uniqueWords1 = otherContentWords.Except(currentContentWords).Concat(currentContentWords.Except(otherContentWords)).ToList();
+			var uniqueWords2 = currentContentWords.Except(otherContentWords).Concat(otherContentWords.Except(currentContentWords)).ToList();
 
             // Do whatever you want with uniqueWords instead
-            Console.WriteLine("Differences MOO:  " + String.Join(" ", uniqueWords));
+            Console.WriteLine("Differences MOO:  " + String.Join(" ", uniqueWords1));
+            Console.WriteLine("Differences2 MOO:  " + String.Join(" ", uniqueWords2));
             
             //Console.WriteLine(result);
 			
