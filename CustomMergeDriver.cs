@@ -5,7 +5,7 @@ class CustomMergeDriver
 {
     static void Main(string[] args)
     {
-		Console.WriteLine("MOOOOOOOOOOOOO");
+        Console.WriteLine("Custom merge driver started");
         if (args.Length < 4)
         {
             Console.WriteLine("Usage: CustomMergeDriver <base> <current> <other> <marker-size>");
@@ -15,6 +15,12 @@ class CustomMergeDriver
         string baseFile = args[0];
         string currentFile = args[1];
         string otherFile = args[2];
+        string markerSize = args[3];
+
+        Console.WriteLine("Base file: {baseFile}");
+        Console.WriteLine("Current file: {currentFile}");
+        Console.WriteLine("Other file: {otherFile}");
+        Console.WriteLine("Marker size: {markerSize}");
 
         try
         {
@@ -22,7 +28,8 @@ class CustomMergeDriver
             string currentContent = File.ReadAllText(currentFile);
             string otherContent = File.ReadAllText(otherFile);
 
-            string result = "MOOOO";
+            string result = "Base:\n{baseContent}\n\nCurrent:\n{currentContent}\n\nOther:\n{otherContent}";
+            Console.WriteLine(result);
 
             // Write the result to the current file
             File.WriteAllText(currentFile, result);
