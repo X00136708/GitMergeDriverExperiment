@@ -5,6 +5,7 @@ class CustomMergeDriver
 {
     static void Main(string[] args)
     {
+		Console.WriteLine("MOOOOOOOOOOOOO");
         if (args.Length < 4)
         {
             Console.WriteLine("Usage: CustomMergeDriver <base> <current> <other> <marker-size>");
