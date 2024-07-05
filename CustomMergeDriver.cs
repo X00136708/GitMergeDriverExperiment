@@ -21,7 +21,7 @@ class CustomMergeDriver
             string currentContent = File.ReadAllText(currentFile);
             string otherContent = File.ReadAllText(otherFile);
 
-            string result = "Base:\n{baseContent}\n\nCurrent:\n{currentContent}\n\nOther:\n{otherContent}";
+            string result = "MOOOO";
 
             // Write the result to the current file
             File.WriteAllText(currentFile, result);
